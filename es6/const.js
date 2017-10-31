@@ -7,7 +7,7 @@
 const user = {
     firstName: 'John',
     lastName: 'Doe'
-};
+}
 
-user.firstName = 'Michael'; // this is fine, we're not changing the "user" type
-user = 123; // this will throw a TypeError as we're changing "user" to be a Number now
+user.firstName = 'Michael' // this is fine, we're not changing the "user" type
+user = 123 // this will throw a TypeError as we're changing "user" to be a Number now

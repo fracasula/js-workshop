@@ -2,10 +2,10 @@
  * Block-scoped variables can now be created with the "let" keyword.
  */
 
-const a = [10, 20, 30];
+const a = [10, 20, 30]
 
 for (let i in a) {
-    console.log(i, a[i]);
+    console.log(i, a[i])
 }
 
 /**
@@ -16,4 +16,4 @@ for (let i in a) {
  * 2 30
  */
 
-console.log(i); // throws a ReferenceError: i is not defined
+console.log(i) // throws a ReferenceError: i is not defined

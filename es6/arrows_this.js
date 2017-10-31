@@ -10,14 +10,19 @@ class Test {
 
     sumArrow() {
         const arrow = () => {
-            return this.a + this.b;
+            // "this" here points to the closest object surrounding the arrow function
+            // which would be an instance of the Test class
+            return this.a + this.b
         }
 
         return arrow()
     }
 
     sumFunc() {
-        const func = function() {
+        const func = function () {
+            // func doesn't even point to an object since it's an anonymous function
+            // so in this case "this" is undefined
+            // TypeError: Cannot read property 'a' of undefined
             return this.a + this.b
         }
 
@@ -28,20 +33,36 @@ class Test {
 const t = new Test()
 
 console.log(t.sumArrow()) // prints 3
-console.log(t.sumFunc()) // throws an error on "return this.a + this.b" (line 21)
+// console.log(t.sumFunc()) // would throw an error on "return this.a + this.b" (line 26)
 
 /**
- * That happens because with "function" we can also create objects so sometimes
- * they work as constructors as shown below
+ * This time we'll be using "function" to construct instances of "Person"
  */
 
 function Person() {
     // The Person() constructor defines `this` as an instance of itself.
     this.age = 0
-    this.growUp = () => ++this.age
+
+    this.arrowGrowUp = () => ++this.age
+
+    this.anonymousGrowUp = function () {
+        return ++this.age
+    }
+
+    setTimeout(function wrongCode() {
+        // this isn't an anonymous function so "this" here does not point
+        // to the Person instance thus we won't change the expected "age"
+        this.age++
+    }, 1)
 }
+
 
 const p = new Person()
 
-console.log(p.growUp()) // prints 1
-console.log(p.growUp()) // prints 2
+const waitTill = new Date(new Date().getTime() + 2)
+while (waitTill > new Date()) {
+    // waits two milliseconds
+}
+
+console.log(p.arrowGrowUp()) // prints 1
+console.log(p.anonymousGrowUp()) // prints 2
