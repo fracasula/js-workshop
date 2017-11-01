@@ -9,3 +9,4 @@
 * [binary and octal literals](bin_oct_literals.js)
 * [enhanced objects](enhanced_objects.js)
 * [destructuring](destructuring.js)
+* [classes](classes.js)
