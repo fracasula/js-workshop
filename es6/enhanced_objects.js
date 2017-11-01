@@ -40,3 +40,9 @@ const methods = {
 for (let num of methods.even([1, 2, 3, 4, 5, 6])) {
     console.log(num) // 2 4 6
 }
+
+// or with the spread operator...
+
+const evenNumbers = [ ...methods.even([1, 2, 3, 4, 5, 6]) ]
+
+console.log(evenNumbers) // [ 2, 4, 6 ]
