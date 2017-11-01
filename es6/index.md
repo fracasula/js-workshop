@@ -11,3 +11,4 @@
 * [enhanced objects](enhanced_objects.js)
 * [destructuring](destructuring.js)
 * [classes](classes.js)
+* [promises](promises.js)
